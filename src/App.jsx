@@ -7,6 +7,8 @@ function App() {
   const [displayMode, setDisplayMode] = useState(false);
   const [data, setData] = useState({
     name: "",
+    email: "",
+    phone: "",
   });
 
   return (
