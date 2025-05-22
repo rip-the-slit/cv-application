@@ -9,6 +9,12 @@ function App() {
     name: "",
     email: "",
     phone: "",
+    school: "",
+    studyTitle: "",
+    studyDate: {
+      from: "",
+      to: "",
+    },
   });
 
   return (

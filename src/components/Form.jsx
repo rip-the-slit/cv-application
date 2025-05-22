@@ -1,4 +1,4 @@
-function Entry({ label, type, value, onChange }) {
+function Entry({ label, type, value, onChange, min, max }) {
   const id = label.replace(/ /g, "-").toLowerCase();
 
   return (
@@ -7,6 +7,8 @@ function Entry({ label, type, value, onChange }) {
       <input
         id={id}
         type={type ? type : "text"}
+        min={min}
+        max={max}
         value={value}
         onChange={onChange}
       />
@@ -56,6 +58,50 @@ export default function Form({ data, setData }) {
             setData(newData);
           }}
         ></Entry>
+      </Section>
+      <Section title="Educational Experience">
+        <Entry
+          label="School Name"
+          value={data.school}
+          onChange={(e) => {
+            const newData = { ...data };
+            newData.school = e.target.value;
+            setData(newData);
+          }}
+        ></Entry>
+        <Entry
+          label="Title of Study"
+          value={data.studyTitle}
+          onChange={(e) => {
+            const newData = { ...data };
+            newData.studyTitle = e.target.value;
+            setData(newData);
+          }}
+        ></Entry>
+        <Section title="Date of Study">
+          <Entry
+            label="From"
+            type="date"
+            value={data.studyDate.from}
+            max={data.studyDate.to}
+            onChange={(e) => {
+              const newData = { ...data };
+              newData.studyDate.from = e.target.value;
+              setData(newData);
+            }}
+          ></Entry>
+          <Entry
+            label="To"
+            type="date"
+            value={data.studyDate.to}
+            min={data.studyDate.from}
+            onChange={(e) => {
+              const newData = { ...data };
+              newData.studyDate.to = e.target.value;
+              setData(newData);
+            }}
+          ></Entry>
+        </Section>
       </Section>
     </form>
   );
