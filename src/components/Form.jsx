@@ -16,6 +16,120 @@ function Entry({ label, type, value, onChange, min, max }) {
   );
 }
 
+function CompanyEntry({ data, setData, index }) {
+  const company = data["companies"][index];
+  const setCompanyData = (dataKey, newValue) => {
+    const newData = { ...data };
+    newData["companies"][index][dataKey] = newValue;
+    setData(newData);
+  };
+
+  return (
+    <div className="company">
+      <Entry
+        label="Company Name"
+        value={company.name}
+        onChange={(e) => {
+          setCompanyData("name", e.target.value);
+        }}
+      ></Entry>
+      <Entry
+        label="Position Title"
+        value={company.position}
+        onChange={(e) => {
+          setCompanyData("position", e.target.value);
+        }}
+      ></Entry>
+      <Section title="Main Job Responsabilities">
+        <ul>
+          {company.responsabilities.map((responsability, index) => {
+            return (
+              <li key={responsability.id}>
+                {
+                  <>
+                    <Entry
+                      label={"Responsability " + (index + 1)}
+                      value={responsability.value}
+                      onChange={(e) => {
+                        const newResponsabilities = [
+                          ...company.responsabilities,
+                        ];
+                        newResponsabilities[index]["value"] = e.target.value;
+                        setCompanyData("responsabilities", newResponsabilities);
+                      }}
+                    ></Entry>
+                    <button
+                      className="remove-responsability"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const newResponsabilities = [
+                          ...company.responsabilities,
+                        ];
+                        newResponsabilities.splice(index, 1);
+                        setCompanyData("responsabilities", newResponsabilities);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </>
+                }
+              </li>
+            );
+          })}
+        </ul>
+        <button
+          className="add-responsability"
+          onClick={(e) => {
+            e.preventDefault();
+            const newResponsabilities = [...company.responsabilities];
+            newResponsabilities.push(company.newResponsability());
+            setCompanyData("responsabilities", newResponsabilities);
+          }}
+        >
+          Add Responsability
+        </button>
+      </Section>
+      <Section title="Dates Worked">
+        <Entry
+          label="From"
+          type="date"
+          value={company.workedDate.from}
+          max={company.workedDate.to}
+          onChange={(e) => {
+            setCompanyData("workedDate", {
+              ...company.workedDate,
+              from: e.target.value,
+            });
+          }}
+        ></Entry>
+        <Entry
+          label="To"
+          type="date"
+          value={company.workedDate.to}
+          min={company.workedDate.from}
+          onChange={(e) => {
+            setCompanyData("workedDate", {
+              ...company.workedDate,
+              to: e.target.value,
+            });
+          }}
+        ></Entry>
+      </Section>
+      <button
+        className="remove-company"
+        onClick={(e) => {
+          e.preventDefault();
+          const newData = { ...data };
+          newData.companies.splice(index, 1);
+          setData(newData);
+        }}
+      >
+        Delete
+      </button>
+    </div>
+  );
+}
+
 function Section({ title, children }) {
   return (
     <fieldset>
@@ -102,6 +216,29 @@ export default function Form({ data, setData }) {
             }}
           ></Entry>
         </Section>
+      </Section>
+      <Section title="Practical Experience">
+        {data.companies.map((company, index) => {
+          return (
+            <CompanyEntry
+              key={company.id}
+              data={data}
+              setData={setData}
+              index={index}
+            ></CompanyEntry>
+          );
+        })}
+        <button
+          className="add-company"
+          onClick={(e) => {
+            e.preventDefault();
+            const newData = { ...data };
+            newData.companies.push(data.newCompany());
+            setData(newData);
+          }}
+        >
+          Add Company
+        </button>
       </Section>
     </form>
   );

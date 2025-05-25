@@ -5,6 +5,24 @@ import Form from "./components/Form.jsx";
 
 function App() {
   const [displayMode, setDisplayMode] = useState(false);
+  const newResponsability = () => {
+    const newId = crypto.randomUUID();
+    return { id: newId, value: "" };
+  };
+  const newCompany = () => {
+    const newId = crypto.randomUUID();
+    return {
+      id: newId,
+      name: "",
+      position: "",
+      responsabilities: [newResponsability()],
+      newResponsability,
+      workedDate: {
+        from: "",
+        to: "",
+      },
+    };
+  };
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -15,6 +33,8 @@ function App() {
       from: "",
       to: "",
     },
+    companies: [newCompany()],
+    newCompany,
   });
 
   return (
