@@ -48,7 +48,7 @@ function CompanyEntry({ data, setData, index }) {
                 {
                   <>
                     <Entry
-                      label={"Responsability " + (index + 1)}
+                      label={"Responsability: "}
                       value={responsability.value}
                       onChange={(e) => {
                         const newResponsabilities = [

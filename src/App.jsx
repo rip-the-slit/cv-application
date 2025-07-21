@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import Display from "./components/Display.jsx";
 import Form from "./components/Form.jsx";
 
