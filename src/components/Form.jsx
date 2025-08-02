@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../styles/Form.css";
 
 function Entry({ label, type, value, onChange, min, max, placeholder }) {
@@ -197,9 +196,7 @@ function Section({ title, children, className }) {
   );
 }
 
-export default function Form({ data, setData }) {
-  const [editCompanyIndex, setEditCompanyIndex] = useState(0);
-
+export default function Form({ data, setData, editCompanyIndex, setEditCompanyIndex }) {
   const returnCompaniesView = () => {
     setEditCompanyIndex(null);
   };

@@ -36,13 +36,19 @@ function App() {
     companies: [newCompany()],
     newCompany,
   });
+  const [editCompanyIndex, setEditCompanyIndex] = useState(0);
 
   return (
     <div className="container">
       {displayMode ? (
         <Display data={data}></Display>
       ) : (
-        <Form data={data} setData={setData}></Form>
+        <Form
+          data={data}
+          setData={setData}
+          editCompanyIndex={editCompanyIndex}
+          setEditCompanyIndex={setEditCompanyIndex}
+        ></Form>
       )}
       <button
         onClick={() => setDisplayMode((mode) => !mode)}
