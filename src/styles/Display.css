@@ -1,0 +1,23 @@
+.companies {
+    perspective: 30rem;
+    max-height: 500px;
+}
+
+.company {
+    background-color: #d4d4d862;
+    backdrop-filter: blur(7px);
+    padding: 5px;
+    font-size: .8rem;
+    display: flex;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.150);
+    transition: all .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    opacity: 0;
+    animation: appear .5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes appear {
+    1% {translate: 0px 20px; opacity: 0;}
+    100% {translate: 0px 0px; opacity: 1;}
+}

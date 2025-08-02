@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Display from "./components/Display.jsx";
 import Form from "./components/Form.jsx";
+import "./styles/App.css";
 
 function App() {
   const [displayMode, setDisplayMode] = useState(false);
@@ -37,16 +38,19 @@ function App() {
   });
 
   return (
-    <>
+    <div className="container">
       {displayMode ? (
         <Display data={data}></Display>
       ) : (
         <Form data={data} setData={setData}></Form>
       )}
-      <button onClick={() => setDisplayMode((mode) => !mode)}>
+      <button
+        onClick={() => setDisplayMode((mode) => !mode)}
+        className="switch"
+      >
         {displayMode ? "Edit" : "Submit"}
       </button>
-    </>
+    </div>
   );
 }
 
