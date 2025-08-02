@@ -1,4 +1,5 @@
 import "../styles/Form.css";
+import { Company } from "./Display.jsx"
 
 function Entry({ label, type, value, onChange, min, max, placeholder }) {
   const id = label.replace(/ /g, "-").toLowerCase();
@@ -150,39 +151,6 @@ function CompanyEntry({ data, setData, index, returnCompaniesView }) {
           Submit Company
         </button>
       </div>
-    </div>
-  );
-}
-
-function Company({ data, index, setEditCompanyIndex }) {
-  const company = data["companies"][index];
-
-  return (
-    <div
-      className="company"
-      style={{
-        transform: `translateY(-${index * 35}px) rotate3d(-0.2, 0, 0, 45deg)`,
-        animationDelay: `${index * 70}ms`
-      }}
-      onClick={() => setEditCompanyIndex(index)}
-    >
-      <div>
-        <h2>{company.name ? company.name : "Nabisco"}</h2>
-        <p>{company.position ? company.position : "CEO"}</p>
-        <p>
-          {company.workedDate.from ? company.workedDate.from : "mm/dd/yyyy"} -{" "}
-          {company.workedDate.to ? company.workedDate.to : "mm/dd/yyyy"}
-        </p>
-      </div>
-      <ul>
-        {company.responsabilities.map((responsability) => {
-          return (
-            <li key={responsability.id}>
-              {responsability.value ? responsability.value : "Tasting Oreos"}
-            </li>
-          );
-        })}
-      </ul>
     </div>
   );
 }

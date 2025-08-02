@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Display from "./components/Display.jsx";
+import {Display} from "./components/Display.jsx";
 import Form from "./components/Form.jsx";
 import "./styles/App.css";
 
