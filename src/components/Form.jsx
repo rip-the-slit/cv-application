@@ -6,7 +6,7 @@ function Entry({ label, type, value, onChange, min, max, placeholder }) {
 
   return (
     <div className="entry">
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id} tabIndex={0}>{label}</label>
       <input
         id={id}
         type={type ? type : "text"}
@@ -158,7 +158,7 @@ function CompanyEntry({ data, setData, index, returnCompaniesView }) {
 function Section({ title, children, className }) {
   return (
     <fieldset className={className}>
-      <legend>{title}</legend>
+      <legend tabIndex={0}>{title}</legend>
       {children}
     </fieldset>
   );

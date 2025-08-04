@@ -19,9 +19,9 @@ function Company({ data, index, setEditCompanyIndex, animating }) {
       onClick={() => (setEditCompanyIndex ? setEditCompanyIndex(index) : null)}
     >
       <div>
-        <h2>{company.name ? company.name : "Nabisco"}</h2>
-        <p>{company.position ? company.position : "CEO"}</p>
-        <p>
+        <h2 tabIndex={0}>{company.name ? company.name : "Nabisco"}</h2>
+        <p tabIndex={0}>{company.position ? company.position : "CEO"}</p>
+        <p tabIndex={0}>
           {company.workedDate.from ? company.workedDate.from : "mm/dd/yyyy"} -{" "}
           {company.workedDate.to ? company.workedDate.to : "mm/dd/yyyy"}
         </p>
@@ -29,7 +29,7 @@ function Company({ data, index, setEditCompanyIndex, animating }) {
       <ul>
         {company.responsabilities.map((responsability) => {
           return (
-            <li key={responsability.id}>
+            <li key={responsability.id} tabIndex={0}>
               {responsability.value ? responsability.value : "Tasting Oreos"}
             </li>
           );
@@ -54,31 +54,31 @@ function Display({ data }) {
     <main>
       <div>
         <section id="general-information">
-          <h1>{data.name}</h1>
+          <h1 tabIndex={0}>{data.name}</h1>
           <address>
             <ul>
-              <li>
+              <li tabIndex={0}>
                 <a href={"mailto:" + data.email}>{data.email}</a>
               </li>
-              <li>
+              <li tabIndex={0}>
                 <a href={"tel:" + data.phone}>{data.phone}</a>
               </li>
             </ul>
           </address>
         </section>
         <section id="educational-experience">
-          <h2>Studied at...</h2>
+          <h2 tabIndex={0}>Studied at...</h2>
           <ul>
-            <li>School: {data.school}</li>
-            <li>Title of Study: {data.studyTitle}</li>
-            <li>
+            <li tabIndex={0}>School: {data.school}</li>
+            <li tabIndex={0}>Title of Study: {data.studyTitle}</li>
+            <li tabIndex={0}>
               Date of Study: {data.studyDate.from} - {data.studyDate.to}
             </li>
           </ul>
         </section>
       </div>
       <section id="practical-experience">
-        <h2>Worked at...</h2>
+        <h2 tabIndex={0}>Worked at...</h2>
         <div className="companies">
           {data.companies.map((company, index) => {
             return (
