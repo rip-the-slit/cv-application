@@ -65,6 +65,10 @@ section > h2 {
   opacity: 0;
 }
 
+.company ul {
+  width: 120px;
+}
+
 .appear {
   animation: appear 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
