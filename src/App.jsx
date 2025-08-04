@@ -38,6 +38,12 @@ function App() {
   });
   const [editCompanyIndex, setEditCompanyIndex] = useState(0);
 
+  if (displayMode) {
+    document.querySelector("body").classList.add("display-mode")
+  } else {
+    document.querySelector("body").classList.remove("display-mode")
+  }
+
   return (
     <div className="container">
       {displayMode ? (

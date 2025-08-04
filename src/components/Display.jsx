@@ -1,17 +1,22 @@
+import { useState } from "react";
 import "../styles/Display.css";
-export { Company, Display }
+export { Company, Display };
 
-function Company({ data, index, setEditCompanyIndex }) {
+function Company({ data, index, setEditCompanyIndex, animating }) {
   const company = data["companies"][index];
 
   return (
     <div
-      className="company"
+      className={
+        "company" +
+        (animating ? " animating" : setEditCompanyIndex ? " appear" : "")
+      }
       style={{
         transform: `translateY(-${index * 35}px) rotate3d(-0.2, 0, 0, 45deg)`,
-        animationDelay: `${index * 70}ms`
+        animationDelay: `${index * 70}ms`,
+        opacity: setEditCompanyIndex ? 0 : 1,
       }}
-      onClick={() => setEditCompanyIndex ? setEditCompanyIndex(index) : null }
+      onClick={() => (setEditCompanyIndex ? setEditCompanyIndex(index) : null)}
     >
       <div>
         <h2>{company.name ? company.name : "Nabisco"}</h2>
@@ -35,6 +40,16 @@ function Company({ data, index, setEditCompanyIndex }) {
 }
 
 function Display({ data }) {
+  const [animatedCompany, setAnimatedCompany] = useState(0);
+
+  setTimeout(() => {
+    if (animatedCompany < data.companies.length - 1) {
+      setAnimatedCompany(animatedCompany + 1);
+    } else {
+      setAnimatedCompany(0);
+    }
+  }, 5000);
+
   return (
     <main>
       <div>
@@ -52,7 +67,7 @@ function Display({ data }) {
           </address>
         </section>
         <section id="educational-experience">
-          <h2>Educational Experience</h2>
+          <h2>Studied at...</h2>
           <ul>
             <li>School: {data.school}</li>
             <li>Title of Study: {data.studyTitle}</li>
@@ -62,17 +77,21 @@ function Display({ data }) {
           </ul>
         </section>
       </div>
-      <div className="companies">
-        {data.companies.map((company, index) => {
-          return (
-            <Company
-              key={company.id}
-              data={data}
-              index={index}
-            ></Company>
-          );
-        })}
-      </div>
+      <section id="practical-experience">
+        <h2>Worked at...</h2>
+        <div className="companies">
+          {data.companies.map((company, index) => {
+            return (
+              <Company
+                key={company.id}
+                data={data}
+                index={index}
+                animating={index == animatedCompany}
+              ></Company>
+            );
+          })}
+        </div>
+      </section>
     </main>
   );
 }
