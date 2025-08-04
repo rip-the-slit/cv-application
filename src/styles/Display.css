@@ -4,6 +4,12 @@ main {
   gap: 3rem;
 }
 
+@media (width < 750px) {
+  main {
+    flex-direction: column;
+  }
+}
+
 section {
   padding: 1rem;
   padding-top: 3rem;

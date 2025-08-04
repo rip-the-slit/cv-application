@@ -28,6 +28,12 @@ form > div {
   gap: 30px;
 }
 
+@media (width < 750px) {
+  form {
+    flex-direction: column;
+  }
+}
+
 form > div {
   flex-direction: column;
 }
