@@ -1,12 +1,65 @@
-# React + Vite
+# CV Application Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a CV Builder App, created as part of The Odin Project curriculum. It's designed to practice fundamental React concepts like props and state management. The application allows users to input their personal, educational, and professional information to generate a CV.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   Create a professional CV by filling out a simple form.
+*   Edit and update your information at any time.
+*   Engaging and interactive user interface with animations.
 
-## Expanding the ESLint configuration
+## Showcase
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Display Mode
+
+![Display Mode Demo GIF](./screenshots/display-mode.gif)
+
+### Edit Mode
+
+![Edit Mode Demo GIF](./screenshots/edit-mode.gif)
+
+## Technologies Used
+
+*   React
+*   Vite
+*   CSS
+
+## Learning Journey
+
+This project was an excellent opportunity to solidify my understanding of React's core concepts, particularly props and state. A significant part of my learning process was dedicated to implementing animations for the company cards.
+
+Initially, I struggled with sequencing the animations. My first approach involved using an `animationend` event listener, but it proved to be unreliable and didn't align with React's declarative nature.
+
+I then explored using `setInterval` to manage the animation sequence, but I encountered challenges with closures and stale state. This led me to a deeper understanding of how to work with intervals in React, thanks to the insightful article "[Making setInterval Declarative with React Hooks](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)".
+
+Ultimately, I opted for a simpler and more robust solution using `setTimeout`. This approach leverages React's re-rendering mechanism to ensure that the timeout always has access to the latest state, avoiding the complexities of closures and providing a clean and effective way to choreograph the animations.
+
+## Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+*   npm
+    ```sh
+    npm install npm@latest -g
+    ```
+
+### Installation
+
+1.  Clone the repo
+    ```sh
+    git clone https://github.com/your_username/your_project.git
+    ```
+2.  Install NPM packages
+    ```sh
+    npm install
+    ```
+3.  Run the development server
+    ```sh
+    npm run dev
+    ```
+
+## Live Demo
+
+[Link to live demo]
