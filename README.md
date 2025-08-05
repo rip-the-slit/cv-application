@@ -1,4 +1,4 @@
-# CV Application Builder
+# CV Builder
 
 This project is a CV Builder App, created as part of The Odin Project curriculum. It's designed to practice fundamental React concepts like props and state management. The application allows users to input their personal, educational, and professional information to generate a CV.
 
@@ -62,4 +62,4 @@ To get a local copy up and running, follow these simple steps.
 
 ## Live Demo
 
-[Link to live demo]
+[[Link to live demo]](https://cv-application-nine-zeta.vercel.app/)
